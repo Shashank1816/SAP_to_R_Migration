@@ -15,7 +15,7 @@ jobs:
       - name: Compile R code
         run: |
           R CMD SHLIB test.R
-          ls
+          ls -l
 
       # - name: Run compiled code
       #   run: Rscript -e "dyn.load('$compiled_file'); my_function()"
