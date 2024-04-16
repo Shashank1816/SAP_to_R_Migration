@@ -14,13 +14,8 @@ jobs:
 
       - name: Compile R code
         run: |
-          compiled_file=$(R CMD SHLIB test.R 2>&1 | grep -o "*.so")
-          if [[ -z "$compiled_file" ]]; then
-            echo "Error: Compilation failed"
-            cat R CMD SHLIB test.R 2>&1
-            exit 1
-          fi
-          echo "Compiled file: $compiled_file"
+          R CMD SHLIB test.R
+          ls
 
       - name: Run compiled code
         run: Rscript -e "dyn.load('$compiled_file'); my_function()"
