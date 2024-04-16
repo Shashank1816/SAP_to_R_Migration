@@ -14,7 +14,8 @@ jobs:
 
       - name: Compile R code
         run: |
-          echo "library(methods)" > temp.R
-          cat test.R >> temp.R
-          R CMD SHLIB temp.R
+ 
+          pwd
+          R CMD SHLIB test.R
+          pwd
           ls -l
