@@ -14,8 +14,11 @@ jobs:
 
       - name: Compile R code
         run: |
-          R CMD SHLIB test.R
-          compiled_file=$(ls *.so)
+          compiled_file=$(R CMD SHLIB test.R 2>&1 | grep -o "*.so")
+          if [[ -z "$compiled_file" ]]; then
+            echo "Error: Compilation failed"
+            exit 1
+          fi
           echo "Compiled file: $compiled_file"
 
       - name: Run compiled code
