@@ -11,11 +11,3 @@ print(efh)
 # Perform t-test
 t_test <- t.test(test ~ cond, data = efh)
 t_test
-
-# Define a simple function
-add_numbers <- function(x, y) {
-  return(x + y)
-}
-
-# Save the function to a shared object file
-dyn.load("test.so")
