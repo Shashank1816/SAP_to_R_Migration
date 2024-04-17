@@ -1,21 +1,32 @@
-name: Compile R code
+name: Compile R Code
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  compile_r_code:
+  build:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Compile R code
-        run: |
- 
-          pwd
-          R CMD SHLIB test.R
-          pwd
-          ls -l
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: '4.1.2'  # You can specify the desired R version here
+    
+    - name: Install dependencies
+      run: |
+        Rscript -e 'install.packages(c("package1", "package2"), repos="https://cran.rstudio.com")'
+    
+    - name: Compile R code
+      run: R CMD build migrated-sas-access-samples-master
+      
+    - name: Check package
+      run: R CMD check migrated-sas-access-samples-master/*.tar.gz
