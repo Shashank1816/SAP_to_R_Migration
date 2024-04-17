@@ -1,6 +1,3 @@
-# Converted R Code:
-
-```R
 # 1. Identify SAS Libraries and Dependencies
 # No equivalent libraries or dependencies required in R.
 
@@ -9,7 +6,6 @@
 
 # 3. Data Manipulation and Transformation
 # Convert SAS data manipulation and transformation functions to R equivalents.
-
 # 4. Procedure Steps and Functions
 # Translate SAS procedure steps and functions to R.
 
@@ -54,6 +50,3 @@ DUBLKTAB <- DUBLKDAT
 
 # Read Table
 print(DUBLKTAB)
-```
-
-Note: The above R code assumes that the necessary R packages are already installed and loaded.
