@@ -27,8 +27,8 @@ jobs:
     - name: Analyze Python code and generate requirements.txt
       id: openai-analysis
       env:
-        AZURE_OPENAI_KEY: e9453f06d2cb4e75bfd3b2df97199702
-        AZURE_OPENAI_ENDPOINT: https://genaiunifiedv2.openai.azure.com/
+        AZURE_OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }} 
+        AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }} 
       run: |
         python_files="${{ steps.find-python-files.outputs.py_scripts }}"
         python_code=""
