@@ -1,6 +1,6 @@
 import pandas as pd
 
-# CHECK DBMS TABLE DROPPED
+# CHECK DBMS TABLE DROPPEDr
 mydblib = pd.HDFStore('mydblib.h5')
 mydblib.remove('DUBLKTAB')
 
