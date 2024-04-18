@@ -3,7 +3,7 @@ name: Install Python Dependencies from Code
 on:
   push:
       paths:
-        - 'migrated_python-sas-access-samples-master/**'
+        - 'migarted_python_sas-access-samples-master/**'
 
 jobs:
   install-dependencies:
