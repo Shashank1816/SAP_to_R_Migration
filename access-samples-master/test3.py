@@ -21,7 +21,7 @@ df_highwage = df_samdat5.drop(columns=['sex', 'birth', 'hired'])
 df_highwage['CATEGORY'] = np.where(df_highwage['salary'] > 60000, 'High',
                                     np.where(df_highwage['salary'] < 30000, 'Low', 'Avg'))
 print("Libname Sample 2: Salary Analysis")
-print(df_highwage[['salary', 'CATEGORY']].style.format({'salary': "${:,.2f}".format}))
+print(df_highwage[['salary', 'CATEGORY']].style.format({'salary': "$:,.2f".format}))
 
 # =========================
 # LIBNAME Sample 3
@@ -43,7 +43,7 @@ print(df_payroll)
 # LIBNAME Sample 5
 # =========================
 df_total_salary = df_samdat5.groupby('JOBCODE').agg(total=('SALARY', 'sum')).reset_index()
-df_total_salary['total'] = df_total_salary['total'].apply(lambda x: "${:,.2f}".format(x))
+df_total_salary['total'] = df_total_salary['total'].apply(lambda x: "$:,.2f".format(x))
 print("Libname Sample 5: Total Salary by Jobcode")
 print(df_total_salary)
 
@@ -65,7 +65,7 @@ print(df_international_flights)
 # LIBNAME Sample 8
 # =========================
 df_employees = pd.read_sql_query("SELECT a.LNAME, a.FNAME, b.SALARY FROM SAMDAT7 a JOIN SAMDAT5 b ON a.IDNUM = b.IDNUM WHERE b.SALARY > 40000", conn)
-df_employees['SALARY'] = df_employees['SALARY'].apply(lambda x: "${:,.2f}".format(x))
+df_employees['SALARY'] = df_employees['SALARY'].apply(lambda x: "$:,.2f".format(x))
 print("Libname Sample 8: Employees with salary greater than $40,000")
 print(df_employees)
 
@@ -169,7 +169,7 @@ FROM SAMDAT7 a
 JOIN SAMDAT5 b ON a.IDNUM = b.IDNUM 
 WHERE SALARY > 40000
 """, conn)
-df_gtforty['Salary'] = df_gtforty['Salary'].apply(lambda x: "${:,.2f}".format(x))
+df_gtforty['Salary'] = df_gtforty['Salary'].apply(lambda x: "$:,.2f".format(x))
 print("Libname Sample 13: Employees with salaries over $40,000")
 print(df_gtforty)
 
@@ -240,7 +240,7 @@ SELECT INVNUM, BILLEDTO, AMTINUS, BILLEDON
 FROM (SELECT PAIDON, BILLEDON, INVNUM, AMTINUS, BILLEDTO FROM SAMDAT9 LIMIT 5) 
 WHERE PAIDON IS NULL AND AMTINUS >= 300000.00
 """, conn)
-df_notpaid['AMTINUS'] = df_notpaid['AMTINUS'].apply(lambda x: "${:,.2f}".format(x))
+df_notpaid['AMTINUS'] = df_notpaid['AMTINUS'].apply(lambda x: "$:,.2f".format(x))
 print("Libname Sample 21: High Bills--Not Paid")
 print(df_notpaid)
 
